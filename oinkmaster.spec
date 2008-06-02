@@ -63,7 +63,7 @@ install -d %{buildroot}%{_sysconfdir}/sysconfig
 install -d %{buildroot}%{_sysconfdir}/cron.daily
 install -d %{buildroot}%{_sysconfdir}/snort/backup
 install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_localstatedir}/%{name}
+install -d %{buildroot}%{_localstatedir}/lib/%{name}
 install -d %{buildroot}%{_mandir}/man1
 
 install -m0755 %{name}.pl %{buildroot}%{_sbindir}/%{name}
@@ -96,7 +96,7 @@ rm -rf %{buildroot}
 %{_sbindir}/%{name}-create-sidmap
 %{_sbindir}/%{name}-makesidex
 %{_mandir}/man1/oinkmaster.1*
-%attr(0755,root,root) %dir %{_localstatedir}/%{name}
+%attr(0755,root,root) %dir %{_localstatedir}/lib/%{name}
 
 %files gui
 %defattr(-,root,root)
