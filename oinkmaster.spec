@@ -1,7 +1,7 @@
 Summary:	A script that will help you update and manage your Snort rules
 Name:		oinkmaster
 Version:	2.1
-Release:	%mkrel 2.20080218.2
+Release:	%mkrel 2.20080218.3
 License:	BSD
 Group:		Networking/Other
 URL:		http://oinkmaster.sourceforge.net/
