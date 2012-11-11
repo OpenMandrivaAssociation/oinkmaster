@@ -1,0 +1,50 @@
+--- oinkmaster.conf	2008-02-18 20:33:45.000000000 +0100
++++ oinkmaster.conf.oden	2008-05-07 16:08:23.000000000 +0200
+@@ -96,6 +96,7 @@
+ # you will get problems.
+ # The following UNIX style path is assumed by default:
+ # path = /bin:/usr/bin:/usr/local/bin
++path = /sbin:/usr/sbin:/bin:/usr/bin
+ 
+ # Example if running native Win32 or standalone Cygwin:
+ # path = c:\oinkmaster;c:\oinkmaster\bin
+@@ -116,6 +117,7 @@
+ # using scp to download the archive, external scp  binary is still 
+ # used.) 
+ # use_external_bins = 0
++use_external_bins = 1
+ 
+ 
+ # Temporary directory to use. This directory must exist when starting and
+@@ -126,6 +128,7 @@
+ 
+ # Example for UNIX.
+ # tmpdir = /home/oinkmaster/tmp/
++tmpdir = /var/lib/oinkmaster
+ 
+ # Example if running native Win32 or Cygwin.
+ # tmpdir = c:\tmp
+@@ -139,6 +142,7 @@
+ # This will affect the mode bits when writing new files.
+ # Keep it commented out to keep your system's current umask.
+ # umask = 0027
++umask = 0027
+ 
+ 
+ # Files in the archive(s) matching this regular expression will be 
+@@ -147,6 +151,7 @@
+ # individual files by specifying the "skipfile" keyword below.
+ # Normally you shouldn't need to change this one.
+ # update_files = \.rules$|\.config$|\.conf$|\.txt$|\.map$
++update_files = \.rules$|\.config$|\.conf$|\.txt$|\.map$
+ 
+ 
+ # Regexp of keywords that starts a Snort rule.
+@@ -174,6 +179,7 @@
+ # etc) and you're sure you want to disable the checks completely,
+ # set use_path_checks to 0.
+ # use_path_checks = 1
++use_path_checks = 1
+ 
+ 
+ # If you want Oinkmaster to send a User-Agent HTTP header string
