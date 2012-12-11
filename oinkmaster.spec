@@ -1,7 +1,7 @@
 Summary:	A script that will help you update and manage your Snort rules
 Name:		oinkmaster
 Version:	2.1
-Release:	%mkrel 2.20080218.3
+Release:	%mkrel 2.20080218.2
 License:	BSD
 Group:		Networking/Other
 URL:		http://oinkmaster.sourceforge.net/
@@ -103,3 +103,24 @@ rm -rf %{buildroot}
 %doc README.gui
 %{_sbindir}/%{name}-oinkgui
 
+
+
+%changelog
+* Fri Sep 04 2009 Thierry Vignaud <tvignaud@mandriva.com> 2.1-2.20080218.2mdv2010.0
++ Revision: 430199
+- rebuild
+
+* Fri Aug 08 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.1-2.20080218.1mdv2009.0
++ Revision: 268346
+- rebuild early 2009.0 package (before pixel changes)
+
+  + Pixel <pixel@mandriva.com>
+    - adapt to %%_localstatedir now being /var instead of /var/lib (#22312)
+
+* Wed May 07 2008 Oden Eriksson <oeriksson@mandriva.com> 2.1-0.20080218.1mdv2009.0
++ Revision: 202941
+- import oinkmaster
+
+
+* Wed May 07 2008 Oden Eriksson <oeriksson@mandriva.com> 2.1-0.20080218.1mdv2009.0
+- initial Mandriva package

@@ -1,0 +1,11 @@
+USE_OINKMASTER_UPDATE="1"
+
+# get your snort code at www.snort.org and enter it here
+OINKMASTER_OINKCODE=""
+
+OINKMASTER_TMPDIR="/var/lib/oinkmaster"
+
+OINKMASTER_OPTIONS=""
+
+OINKMASTER_RULES_FILE="snortrules-snapshot-CURRENT.tar.gz"
+

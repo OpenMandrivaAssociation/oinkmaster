@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# A simple script to update the snort rules. There is very little error
+# checking here. It is implied your machine has network, dns resolving
+# and all that.
+# 
+# Oden Eriksson <oeriksson@mandriva.com>
+
+# Source oinkmaster configuration.
+. /etc/sysconfig/oinkmaster
+
+if [ "${USE_OINKMASTER_UPDATE}" == "1" ]; then
+
+    LOCKFILE="/tmp/oinkmaster-update.lock"
+
+    # yonder some
+    if [ -f ${LOCKFILE} ]; then
+	echo "ERROR: The ${LOCKFILE} file was found indicating an error. Maybe oinkmaster-update is still running..."
+	exit 1
+    fi
+
+    if [ -z "${OINKMASTER_OINKCODE}" ] ; then
+	echo "You need an oinkcode to run this script!"
+	echo "Aborting"
+	exit 1
+    fi
+
+    export TMPDIR="${OINKMASTER_TMPDIR}"
+    export TMP="${TMPDIR}"
+
+    if ! [ -d ${OINKMASTER_TMPDIR} ]; then
+	echo "You need the ${OINKMASTER_TMPDIR} directory to run this script!"
+	echo "Aborting"
+	exit 1
+    fi
+
+    if ! [ -x /usr/bin/wget ]; then
+	echo "You need the /usr/bin/wget to run this script!"
+	echo "Aborting"
+	exit 1
+    fi
+
+    # make the lockfile
+    touch ${LOCKFILE}
+
+    # update the rules
+    /usr/sbin/oinkmaster ${OINKMASTER_OPTIONS} -o /etc/snort/rules/ -b /etc/snort/backup \
+    -u http://www.snort.org/pub-bin/oinkmaster.cgi/${OINKMASTER_OINKCODE}/${OINKMASTER_RULES_FILE}
+    RETVAL1="$?"
+
+    if [ $RETVAL1 -eq "0" ]; then
+
+	# verify it's working
+	/usr/sbin/snort -c /etc/snort/snort.conf -T > /dev/null 2>&1
+	RETVAL=$?
+	if [ $RETVAL -gt "0" ]; then
+	    echo "ERROR: There were problems with the configuration, snort may not be working properly..."
+	fi
+
+	# restart snort
+	if [ -x /etc/rc.d/init.d/snort ]; then
+	    /etc/rc.d/init.d/snort condrestart
+	fi
+
+	# hopefully everything's ok
+	rm -f ${LOCKFILE}
+        exit 0
+    fi
+
+fi
