@@ -4,7 +4,7 @@ Version:	2.1
 Release:	2.20080218.3
 License:	BSD
 Group:		Networking/Other
-URL:		http://oinkmaster.sourceforge.net/
+URL:		https://oinkmaster.sourceforge.net/
 Source0:	%{name}-%{version}-20080218.tar.gz
 Source1:	oinkmaster-update
 Source2:	oinkmaster.sysconfig
